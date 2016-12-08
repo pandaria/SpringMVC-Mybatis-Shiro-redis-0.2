@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8" />
+		<title>管理员 —个人中心</title>
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+		<link   rel="icon" href="http://img.wenyifan.net/images/favicon.ico" type="image/x-icon" />
+		<link   rel="shortcut icon" href="http://img.wenyifan.net/images/favicon.ico" />
+		<link href="../../js/common/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="../../css/common/base.css" rel="stylesheet"/>
+		<script  src="http://open.sojson.com/common/jquery/jquery1.8.3.min.js"></script>
+		<script  src="../../js/common/layer/layer.js"></script>
+		<script  src="../../js/common/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+	<body data-target="#one" data-spy="scroll">
+		<script baseUrl="/shiro.demo" src="/shiro.demo/js/user.login.js"></script>
+			<div class="navbar navbar-inverse navbar-fixed-top animated fadeInDown" style="z-index: 101;height: 41px;">
+				  
+			      <div class="container" style="padding-left: 0px; padding-right: 0px;">
+			        <div class="navbar-header">
+			          <button data-target=".navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle collapsed">
+			            <span class="sr-only">导航</span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			          </button>
+				     </div>
+				     <div role="navigation" class="navbar-collapse collapse">
+				     		<a id="_logo"  href="#" style="color:#fff; font-size: 24px;" class="navbar-brand hidden-sm">SSM + Shiro Demo 演示</a>
+				          <ul class="nav navbar-nav" id="topMenu">
+							<li class="dropdown active">
+								<a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="/shiro.demo/user/index.shtml">
+									个人中心<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="/shiro.demo/user/index.shtml">个人资料</a></li>
+									<li><a href="/shiro.demo/user/updateSelf.shtml" >资料修改</a></li>
+									<li><a href="/shiro.demo/user/updatePswd.shtml" >密码修改</a></li>
+									<li><a href="/shiro.demo/role/mypermission.shtml">我的权限</a></li>
+								</ul>
+							</li>	  
+							<li class="dropdown ">
+								<a aria-expanded="false" aria-haspopup="true"  role="button" data-toggle="dropdown" class="dropdown-toggle" href="/shiro.demo/member/list.shtml">
+									用户中心<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+										<li><a href="/shiro.demo/member/list.shtml">用户列表</a></li>
+										<li><a href="/shiro.demo/member/online.shtml">在线用户</a></li>
+								</ul>
+							</li>	
+								<li class="dropdown ">
+									<a aria-expanded="false" aria-haspopup="true"  role="button" data-toggle="dropdown" class="dropdown-toggle" href="/shiro.demo/permission/index.shtml">
+										权限管理<span class="caret"></span>
+									</a>
+									<ul class="dropdown-menu">
+											<li><a href="/shiro.demo/role/index.shtml">角色列表</a></li>
+											<li><a href="/shiro.demo/role/allocation.shtml">角色分配</a></li>
+											<li><a href="./permissionManage.html">权限列表</a></li>
+											<li><a href="/shiro.demo/permission/allocation.shtml">权限分配</a></li>
+									</ul>
+								</li>	
+							<li>
+								<a class="dropdown-toggle" target="_blank" href="http://www.sojson.com/tag/shiro">
+									Shiro 博客<span class="collapsing"></span>
+								</a>
+							</li>	          
+							<li>
+								<a class="dropdown-toggle" href="http://www.sojson.com/shiro">
+									本项目介绍<span class="collapsing"></span>
+								</a>
+							</li>	          
+				          </ul>
+				           <ul class="nav navbar-nav  pull-right" >
+							<li class="dropdown " style="color:#fff;">
+								<a aria-expanded="false" aria-haspopup="true"  role="button" data-toggle="dropdown"  
+										onclick="location.href='/shiro.demo/user/index.shtml'" href="/shiro.demo/user/index.shtml" class="dropdown-toggle qqlogin" >
+										管理员<span class="caret"></span></a>
+										<ul class="dropdown-menu" userid="1">
+											<li><a href="http://shiro.itboy.net/user/index.shtml">个人资料</a></li>
+											<li><a href="http://shiro.itboy.net/role/mypermission.shtml">我的权限</a></li>
+											<li><a href="javascript:void(0);" onclick="logout();">退出登录</a></li>
+										</ul>
+							</li>	
+				          </ul>
+				          <style>#topMenu>li>a{padding:10px 13px}</style>
+				    </div>
+			  	</div>
+			</div>
+					<div class="container" style="padding-bottom: 15px;min-height: 300px; margin-top: 40px;">
+						<div class="row">
+			<div id="one" class="col-md-2">
+				<ul data-spy="affix" class="nav nav-list nav-tabs nav-stacked bs-docs-sidenav dropdown affix" style="top: 100px; z-index: 100;"  id="left">
+				  <li class="active">
+				      <a href="/shiro.demo/user/index.shtml">
+				    	 <i class="glyphicon glyphicon-chevron-right"></i>个人资料
+				      </a>
+				       <ul class="dropdown-menu" aria-labelledby="dLabel" style="margin-left: 160px; margin-top: -40px;">
+			              <li><a href="/shiro.demo/user/updateSelf.shtml">资料修改</a></li>
+			              <li><a href="/shiro.demo/user/updatePswd.shtml">密码修改</a></li>
+			          </ul>
+				  </li>
+				  <li class="  dropdown">
+				      <a href="/shiro.demo/role/mypermission.shtml">
+				    	 <i class="glyphicon glyphicon-chevron-right"></i>我的权限
+				      </a>
+				  </li>
+				</ul>
+			</div>
+				<div class="col-md-10">
+					<h2>个人资料</h2>
+					<hr>
+					<table class="table table-bordered">
+						<tr>
+							<th>昵称</th>
+							<td>管理员</td>
+						</tr>
+						<tr>
+							<th>Email/帐号</th>
+							<td>admin</td>
+						</tr>
+						<tr>
+							<th>创建时间</th>
+							<td>2016-06-16 11:15</td>
+						</tr>
+						<tr>
+							<th>最后登录时间</th>
+							<td>2016-12-07 22:50</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script lang>
+			var topHeaderJson = [{}];
+		</script>
+	</body>
+</html>
