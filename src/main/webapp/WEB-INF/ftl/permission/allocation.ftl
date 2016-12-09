@@ -4,14 +4,35 @@
 		<meta charset="utf-8" />
 		<title>权限分配 - 权限管理</title>
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+		<script src="${basePath}/js/common/jquery-1.8.3.js"></script>
 		<link   rel="icon" href="http://img.wenyifan.net/images/favicon.ico" type="image/x-icon" />
 		<link   rel="shortcut icon" href="http://img.wenyifan.net/images/favicon.ico" />
 		<link href="${basePath}/js/common/bootstrap/3.3.5/css/bootstrap.min.css?${_v}" rel="stylesheet"/>
 		<link href="${basePath}/css/common/base.css?${_v}" rel="stylesheet"/>
-		<script  src="http://open.sojson.com/common/jquery/jquery1.8.3.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="${basePath}/css/jsgrid/demos.css" />
+	    <link href='${basePath}/css/jsgrid/googleapis.css' rel='stylesheet' type='text/css'>
+	
+	    <link rel="stylesheet" type="text/css" href="${basePath}/css/jsgrid/jsgrid.css" />
+	    <link rel="stylesheet" type="text/css" href="${basePath}/css/jsgrid/theme.css" />
+		
 		<script  src="${basePath}/js/common/layer/layer.js"></script>
 		<script  src="${basePath}/js/common/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script  src="${basePath}/js/shiro.demo.js"></script>
+		
+	    <script src="${basePath}/js/common/demo/db.js"></script>
+	
+	    <script src="${basePath}/js/common/jsgrid/jsgrid.core.js"></script>
+	    <script src="${basePath}/js/common/jsgrid/jsgrid.load-indicator.js"></script>
+	    <script src="${basePath}/js/common/jsgrid/jsgrid.load-strategies.js"></script>
+	    <script src="${basePath}/js/common/jsgrid/jsgrid.sort-strategies.js"></script>
+	    <script src="${basePath}/js/common/jsgrid/jsgrid.field.js"></script>
+	    <script src="${basePath}/js/common/jsgrid/fields/jsgrid.field.text.js"></script>
+	    <script src="${basePath}/js/common/jsgrid/fields/jsgrid.field.number.js"></script>
+	    <script src="${basePath}/js/common/jsgrid/fields/jsgrid.field.select.js"></script>
+	    <script src="${basePath}/js/common/jsgrid/fields/jsgrid.field.checkbox.js"></script>
+	    <script src="${basePath}/js/common/jsgrid/fields/jsgrid.field.control.js"></script>
+		
 		<script >
 			so.init(function(){
 				//初始化全选。
@@ -110,6 +131,32 @@
 			}
 			</@shiro.hasPermission>
 		</script>
+		<script>
+		     $(document).ready(function() {
+	            $("#jsGrid").jsGrid({
+	                height: "auto",
+	                width: "auto",
+	                filtering: false,
+	                editing: false,
+	                inserting: true,
+	                sorting: true,
+	                paging: true,
+	                autoload: true,
+	                pageSize: 15,
+	                pageButtonCount: 5,
+	                deleteConfirm: "Do you really want to delete the client?",
+	                controller: db,
+	                fields: [
+	                    { name: "Name", type: "text", width: 150 },
+	                    { name: "Age", type: "number", width: 50 },
+	                    { name: "Address", type: "text", width: 200 },
+	                    { name: "Country", type: "select", items: db.countries, valueField: "Id", textField: "Name" },
+	                    { name: "Married", type: "checkbox", title: "Is Married", sorting: false },
+	                    { type: "control" }
+	                ]
+	            });
+	        });
+		</script>
 	</head>
 	<body data-target="#one" data-spy="scroll">
 		<#--引入头部-->
@@ -164,6 +211,8 @@
 							</tr>
 						</#if>
 					</table>
+					<div id="jsGrid"></div>
+					
 					<#if page?exists>
 						<div class="pagination pull-right">
 							${page.pageHtml}
@@ -196,6 +245,36 @@
 			<#--/弹框-->
 			
 		</div>
-			
+		<h1>Basic Scenario</h1>
+	    <div id="jsGrid"></div>
+	
+	    <script>
+	        $(function() {
+	
+	            $("#jsGrid").jsGrid({
+	                height: "70%",
+	                width: "100%",
+	                filtering: true,
+	                editing: true,
+	                inserting: true,
+	                sorting: true,
+	                paging: true,
+	                autoload: false,
+	                pageSize: 15,
+	                pageButtonCount: 5,
+	                deleteConfirm: "Do you really want to delete the client?",
+	                controller: db,
+	                fields: [
+	                    { name: "Name", type: "text", width: 150 },
+	                    { name: "Age", type: "number", width: 50 },
+	                    { name: "Address", type: "text", width: 200 },
+	                    { name: "Country", type: "select", items: db.countries, valueField: "Id", textField: "Name" },
+	                    { name: "Married", type: "checkbox", title: "Is Married", sorting: false },
+	                    { type: "control" }
+	                ]
+	            });
+	
+	        });
+	    </script>	
 	</body>
 </html>
